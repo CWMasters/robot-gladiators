@@ -12,7 +12,7 @@ var fight = function(enemy) {
     // repeat and execute as long as the enemy-robot is still alive
     while(playerInfo.health > 0 && enemy.health > 0) {
     // Prompt to fight or skip
-    var promptFight = window.prompt("Would you like to FIGHT or SKIP this battle? Enter 'FIGHT or 'SKIP' to choose.");
+    var promptFight = window.prompt('Would you like to FIGHT or SKIP this battle? Enter "FIGHT" or "SKIP" to choose.');
 
     // if player chooses to "skip" confirm and then end loop
     if (promptFight === "skip" || promptFight === "SKIP") {
@@ -126,7 +126,7 @@ var fight = function(enemy) {
           window.alert("Great job, you've survived the game! You now have a score of " + playerInfo.money + ".");
     }
       else {
-          window.alert("You've lost your robot in battle.");
+          window.alert("You've lost your robot in battle!");
     }
 
     //ask player if they would like to play again
@@ -177,9 +177,21 @@ switch (shopOptionPrompt) {
   }
 };
 
+// function to set name
+var getPlayerName = function() {
+    var name = "";
+
+    while (name === "" || name === null) {
+        name = prompt("What is your robot's name?");
+    }
+
+    console.log("Your robot's name is " + name);
+    return name;
+};
+
 // player info
 var playerInfo = {
-    name: window.prompt("Waht is your robot's name?"),
+    name: getPlayerName(),
     health: 100,
     attack: 10,
     money: 10,
@@ -232,22 +244,10 @@ var enemyInfo = [
   console.log(enemyInfo[0]['attack']);
 
 // start game when the page loads
-startGame();
+//startGame();
     
+var clickMe = document.querySelector("#click-me");
+clickMe.addEventListener("click", startGame);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // run fight function to start game
-    //fight()
+   
