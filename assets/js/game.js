@@ -50,20 +50,22 @@ var fight = function(enemy) {
           break;
       }
       
-      var damage = randomNumber(playerInfo.attck - 3, playerInfo.attack);
+      //generate random damage value based on player's attack power
+      var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
     
     
     
       
 
-        //generate random damage value based on player's attack power
-        var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
+
 
         enemy.health = Math.max(0, enemy.health - damage);
         console.log(
             playerInfo.name + " attacked " + enemy.name+ ". " + enemy.name + " now has " + enemy.health + " health remaining. "
         );
+
+
         
         //Check enemy's health
         if (enemy.health <= 0) {
@@ -173,35 +175,29 @@ var fight = function(enemy) {
 var shop = function() {
     // ask player twhat they'd like to do
     var shopOptionPrompt = window.prompt(
-        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice. "
+        "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? please enter one 1 for REFILL, 2 for UPGRADE, or 3 for LEAVE."
     );
+
+    // convert option from prompt to an actual number
+    shopOptionPrompt = parseInt(shopOptionPrompt);
 
     // use the switch to carry out an action
 switch (shopOptionPrompt) {
-    case "REFILL": //NEW CASE
-    case "refill":
+    case 1:
         playerInfo.refillHealth();
         break;
-
-    case "UPGRADE": //NEW CASE
-    case "upgrade":
+    case 2:
         playerInfo.upgradeAttack();
         break;
-        
-
-    case "LEAVE": //NEW CASE
-    case "leave":
+    case 3:
         window.alert("Leaving the store.");
-
     // do nothing, so function will end
       break;
     default:
         window.alert("You did not pick a valid option. Try again.");
-
     // call shop() again to force player to pick a valid option
     shop();
       break;
-
   }
 };
 
