@@ -45,7 +45,7 @@ var fight = function(enemy) {
     // keep track of who goes first
     var isPlayerTurn =true;
 
-    //randomly change tur order
+    //randomly change turn order
     if (Math.random() > 0.5) {
         isPlayerTurn =false;
     }
@@ -62,10 +62,12 @@ var fight = function(enemy) {
       var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
 
       // remove enemy's health by subtracting the amount we set in the damage variable
-      enemy.health - Math.max(0, enemy.health - damage);
+      enemy.health = Math.max(0, enemy.health - damage);
       console.log(
           playerInfo.name +
             " attacked " +
+            enemy.name +
+            ". " +
             enemy.name + 
             " now has " +
             enemy.health +
@@ -136,6 +138,7 @@ var fight = function(enemy) {
 
           // reset enemyHealth before starting new fight
           pickedEnemyObj.health = randomNumber(40 , 60);
+
           console.log(pickedEnemyObj);
 
           // pass the pickedEnemyname variable's value into the fight function, where it will assume the value of the enemyName parameter
